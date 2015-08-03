@@ -1,0 +1,116 @@
+Undefined behavior - when accessing an array out of bounds
+
+Implementation dependent behavior - 17/-5  Can result in two answers.  Left to compiler writer to determine what the right answer is
+
+Visual C++ -  Microsoft compiler
+
+g++/gcc - Used on Linux and Mac.  Problems are that it has been around a very long time.  Accumulated and is complicated.  Hard to do things with source code other than compile it.
+
+clang/clang++ -  Started from scratch.  Gives access to parse trees and static analyzers.  Virtual machine to compile to native code.  Much better error messages on the front end.  Can be installed on Windows and is nice to use because error messages are clearer.
+
+Standardization of the language did not arise until 1998. C++98 is the common standardization.
+C++11 is what we will be using in this class.
+
+Char is really an integer type.  It is only one byte long.
+
+Order of when functions are called on the same line, is not known in CPP.  It is dependent on the compiler.
+
+C++11 for loop:
+in a[] {1,2,3};
+for (auto val : a)
+{
+  ...
+}
+Only use this if you want to visit every item.
+
+Functions need to be declared before the main function.  This is so main knows the arguments and that it exists.
+
+Static local variables can only be initialized once and only the first time we reach that declaration.
+
+& is a pass by reference item in C++.  Therefore when passing by reference, the actual object changes, as where pass by value copies the value over.  Pointer implementation would have the method call using the & sign.
+
+References are bound to that object for the life of that reference.  Pointers can be inter-changable and point to different memory addresses.
+
+Arrays by default pass pointers, does not pass by value.
+
+Const keyword modifies the array and making it immutable.  Therefore, the function cannot modify the array.  Pass by value requires const.
+
+Default values can be supplied in prototype function.  Prototype is the signature without the implementation.
+
+Inline is a hint that the implementation is so fast that you don't need to make a function call.  Function calls are expensive.
+
+Lesson Three:
+
+C++ is a strongly typed language.
+
+const cannot be modified and is relative to the scope of the object.  Const needs to be initialized at the time of declaration of the variable
+
+typedef creates a synonym for an existing type so rather than having the type written everywhere, use typedef to create a synonym for that type.
+
+New syntax for C++11 is:
+using ID = unsigned short;
+
+Syntax previously used:
+typedef unsigned short ID;
+
+enumeration is a set of symbolic constants.  Implemented as integers.
+
+End each case with break;  Omitting the break means that the same behavior will be applied to multiple cases.
+
+C++11 will allow the type to be specified when doing enumerations. (Short, int, long)
+
+C++11 allows that the constants determined in an enumeration can be specified and not remain ambiguious
+
+Full name of the type is scoped.  For instance, in this method, DAY::SUNDAY
+
+'\0'  Represents the end of a string since a string is just an array of characters.  The c++ library adds <cstring> which helps support strings in c++
+
+C++ also introduces <string> library.  Now part of the standard library and will get the appropriate length required.
+
+using directive allows the namespace to be dropped from using functions. e.g.:
+using namespace std;
+cout << "Hello"; versus -> std::cout << "Hello";
+
+struct defines an aggregate data type, semi-colan required at the end of a struct definition.
+
+dot operator used to access members of a data type StructType.DataMember
+
+If you are going to pass by value, this can be an expensive operation.  Instead, use const and the '&' pass by reference operator.
+
+depends on how cheap it is to pass by value.  Built in data types are good to pass by value and very small structures.
+
+Overloading... Multiple functions with the same name but different signatures....
+
+Sometimes implicit converting can cause ambigious calls can be generated from function overloading.
+
+Template makes a definition for a function that has essentially the same logic.  Keyword template is used and will replace T with the type that is needed.
+
+What can go wrong?
+
+1)  We might not match the template.
+
+2)  The template matches but the instantiation fails because the matches don't compile.
+
+3)  Template matches, code compiles, won't do what you want.  For instance, comparing two cstrings it will return whatever memory address is higher.
+
+How to remedy, create specific overloads.  non-template functions beat out template functions when comparing two functions that are overloaded.  That way special exceptions win out in the compiler.
+
+Lesson 4 - Member Variables
+
+member functions are contained within the struct
+Member names start with an underscore.  This is to prevent things from getting confused.
+shares versus m_shares or shares_
+This prevents confusion between data members and other local variables.
+
+Passing by reference with an object causes a compile error when we are calling a function of that object.
+
+Must declare const on the prototype function to avoid the compile error in the declaration and the implementation.
+
+Constructor can throw an exception if it cannot create an object.
+
+Delegating constructors.  Used for overloading and can be used for additional items as well.  This changes the way we can do things.  Available at c++11
+
+Can create a default constructor which takes no arguments.  These should seem natural.  Default constructor has no () e.g.:
+Position acme; NOT Position acme();
+
+C++11 can initialize a default value to use if the constructor does not.
