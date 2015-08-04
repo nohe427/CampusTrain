@@ -30,7 +30,7 @@ int main(int argc, const char * argv[]) {
     std::cout << d2.year() << " " << d2.month() << " " << d2.day() << " " << std::endl;
     d2.advance(60);
     std::cout << d2.year() << " " << d2.month() << " " << d2.day() << " " << std::endl;
-    d2.advance(400);
+    d2.advance(1000);
     std::cout << d2.year() << " " << d2.month() << " " << d2.day() << " " << std::endl;
     if (d.comesBefore(d2))
     {
