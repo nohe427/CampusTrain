@@ -95,7 +95,7 @@ What can go wrong?
 
 How to remedy, create specific overloads.  non-template functions beat out template functions when comparing two functions that are overloaded.  That way special exceptions win out in the compiler.
 
-Lesson 4 - Member Variables
+Lesson 4 & 5 - Member Variables
 
 member functions are contained within the struct
 Member names start with an underscore.  This is to prevent things from getting confused.
@@ -114,3 +114,21 @@ Can create a default constructor which takes no arguments.  These should seem na
 Position acme; NOT Position acme();
 
 C++11 can initialize a default value to use if the constructor does not.
+
+Destructor looks like ~Constructor();  Automatically called whenever an object of a type goes away.  Only required for clean-up of special types.  Difference between Java/C# and CPP is that we don't know when garbage collection occurs whereas in cpp we know when it is called.
+
+If there are no default constructors, creating an array of objects will not compile.  This is because an array creates the objects as it is instantiated.
+
+Vectors are a dynamically resizeable array.  It creates a list of items but its empty.  Therefore, if we wanted to create an array without a default constructor, a vector data structure may be a better choice.
+
+Lesson 6 - Access Control (Encapsulation)
+
+public members or private member data types.  private: and then everything that follows is private.
+
+A struct is a class a class is a struct.  In a class, access control defaults to private whereas in struct it defaults to public.  Must explicitely declare members public in a class.
+
+Helper functions can be created privately to help set values in the code.
+
+Friend functions should be rare.  Allows external functions to access private members.
+
+Access control is cost free at runtime, its something that occurs at compile time.
