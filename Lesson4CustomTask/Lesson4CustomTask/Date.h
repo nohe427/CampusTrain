@@ -24,6 +24,7 @@ public:
     bool comesBefore(Date dateToCompare) const;
     void operator +=(int daysToAdvance);
     bool operator< (Date dateToCompare) const;
+    bool operator> (Date dateToCompare) const;
     
 private:
     int year_;

@@ -132,3 +132,27 @@ Helper functions can be created privately to help set values in the code.
 Friend functions should be rare.  Allows external functions to access private members.
 
 Access control is cost free at runtime, its something that occurs at compile time.
+
+Lesson 7 - Inheritance 1
+
+A class to represent base objects and then to inherit use:
+struct Employee : Person
+Employee is the new class and person is the base class(Super class).
+
+Default inheritance is private for a class so when using a class to inherit is you need to declare the base class as public if needed.
+
+If invoking a base class function in a class that inherits it, we need to qualify it to the base class.
+
+C++ class can have more than one base class.
+
+Private members of base classes are not accessible to derived classes.
+
+Protected members are visible ot descendant classes but not to classes outside of the hierarchy.
+
+Don't make data anything other than private.  Do protected functions to protect data.
+
+Inheritance has no additional overhead.  This means that everything is aggregated at compile time rather than runtime.
+
+Lesson 8 - Virtual Functions 1
+
+.

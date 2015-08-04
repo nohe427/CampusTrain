@@ -65,10 +65,10 @@ void Date::operator +=(int daysToAdvance)
 
 bool Date::comesBefore(Date dateToCompare) const
     {
-        if (year_ == dateToCompare.year())
+        if (year_ == dateToCompare.year_)
         {
-            if (month_ == dateToCompare.month()) {
-                if (day_ > dateToCompare.day()) {
+            if (month_ == dateToCompare.month_) {
+                if (day_ > dateToCompare.day_) {
                     return false;
                 }
                 else
@@ -76,7 +76,7 @@ bool Date::comesBefore(Date dateToCompare) const
                     return true;
                 }
             }
-            else if (month_ > dateToCompare.month())
+            else if (month_ > dateToCompare.month_)
             {
                 return false;
             }
@@ -84,7 +84,7 @@ bool Date::comesBefore(Date dateToCompare) const
                 return true;
             }
         }
-        else if (year_ < dateToCompare.year())
+        else if (year_ < dateToCompare.year_)
         {
             return true;
         }
@@ -96,10 +96,10 @@ bool Date::comesBefore(Date dateToCompare) const
 
 bool Date::operator< (Date dateToCompare) const
 {
-    if (year_ == dateToCompare.year())
+    if (year_ == dateToCompare.year_)
     {
-        if (month_ == dateToCompare.month()) {
-            if (day_ > dateToCompare.day()) {
+        if (month_ == dateToCompare.month_) {
+            if (day_ > dateToCompare.day_) {
                 return false;
             }
             else
@@ -107,7 +107,7 @@ bool Date::operator< (Date dateToCompare) const
                 return true;
             }
         }
-        else if (month_ > dateToCompare.month())
+        else if (month_ > dateToCompare.month_)
         {
             return false;
         }
@@ -115,7 +115,7 @@ bool Date::operator< (Date dateToCompare) const
             return true;
         }
     }
-    else if (year_ < dateToCompare.year())
+    else if (year_ < dateToCompare.year_)
     {
         return true;
     }
@@ -123,4 +123,9 @@ bool Date::operator< (Date dateToCompare) const
     {
         return false;
     }
+}
+
+bool Date::operator> (Date dateToCompare) const
+{
+    return !(this->comesBefore(dateToCompare));
 }
