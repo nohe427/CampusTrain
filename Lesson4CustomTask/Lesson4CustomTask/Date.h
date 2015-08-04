@@ -21,7 +21,9 @@ public:
     int month() const { return month_; }
     int day()   const { return day_;   }
     void advance(int daysToAdvance);
-    bool comesBefore(Date dateToCompare);
+    bool comesBefore(Date dateToCompare) const;
+    void operator +=(int daysToAdvance);
+    bool operator< (Date dateToCompare) const;
     
 private:
     int year_;

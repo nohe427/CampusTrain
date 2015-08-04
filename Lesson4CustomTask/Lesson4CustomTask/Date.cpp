@@ -43,24 +43,84 @@ void Date::advance(int daysToAdvance)
         month_+=totalMonthsToAdvance;
         day_+=daysToAdvance;
     }
-    
-bool Date::comesBefore(Date dateToCompare)
+
+void Date::operator +=(int daysToAdvance)
+{
+    int totalYearsToAdvance = 0;
+    int totalMonthsToAdvance = 0;
+    while (daysToAdvance + day_ > 30)
     {
-        if (year_ > dateToCompare.year())
+        totalMonthsToAdvance +=1;
+        daysToAdvance -=30;
+    }
+    while (totalMonthsToAdvance + month_ > 12)
+    {
+        totalMonthsToAdvance -= 12;
+        totalYearsToAdvance += 1;
+    }
+    year_+=totalYearsToAdvance;
+    month_+=totalMonthsToAdvance;
+    day_+=daysToAdvance;
+}
+
+bool Date::comesBefore(Date dateToCompare) const
+    {
+        if (year_ == dateToCompare.year())
+        {
+            if (month_ == dateToCompare.month()) {
+                if (day_ > dateToCompare.day()) {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else if (month_ > dateToCompare.month())
+            {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else if (year_ < dateToCompare.year())
+        {
+            return true;
+        }
+        else
         {
             return false;
+        }
+    }
+
+bool Date::operator< (Date dateToCompare) const
+{
+    if (year_ == dateToCompare.year())
+    {
+        if (month_ == dateToCompare.month()) {
+            if (day_ > dateToCompare.day()) {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         else if (month_ > dateToCompare.month())
         {
             return false;
         }
-        else if (day_ > dateToCompare.day())
-        {
-            return false;
-            
-        }
-        else
-        {
+        else {
             return true;
         }
     }
+    else if (year_ < dateToCompare.year())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
