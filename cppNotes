@@ -155,4 +155,20 @@ Inheritance has no additional overhead.  This means that everything is aggregate
 
 Lesson 8 - Virtual Functions 1
 
+Dynamic binding - use the function of the derived object rather than the base class.
+
+declaring member functions as virtual, means that anything inherited by that object will be dynamically bound.  Once the base class function is declared virtual, it does not have to be declared as virtual in the derived classes but it helps make code more readable.
+
+Virtual functions employ dynamic binding rather than static.
+
+To override, the functions need to match exactly in signature.
+
+The keyword override will check to see if it overrides the function and can throw a compiler error for checking.
+
+Override is only a keyword in the context of a function declaration.
+
+Static binding is by default in C++ (no virtual keyword).
+
+final at the end of a declaration of a base class does not allow derrived classes to override an implementation.
+
 .
