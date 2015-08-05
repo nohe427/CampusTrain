@@ -351,6 +351,6 @@ The appropriate handler needs to be choosen by the type thrown.
 
 catch(...)  <- catches any exception.  However, there is not much that can be done with it.
 
-Throwing exception invokes destructors for local objects.
+Throwing exception invokes destructors for local objects, raw dynamic memory must explicitly be deleted though.
 
-.
+noexcept prevents functions from throwing exceptions.
