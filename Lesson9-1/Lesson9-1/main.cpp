@@ -25,6 +25,15 @@ public:
     int item(int i, T& value) const;
 };
 
+template<typename T>
+void replace(T& item, T& item2)
+{
+    T value = item;
+    T value2 = item2;
+    item = value2;
+    item2 = value;
+}
+
 template<typename T, int N>
 void Bag<T,N>::add(T item)
 {
@@ -33,6 +42,11 @@ void Bag<T,N>::add(T item)
         if (m_items[i] == item)
         {
             m_counts[i]++;
+            while (i != 0 && m_counts[i] > m_counts[i-1]) {
+                replace(m_items[i], m_items[i-1]);
+                replace(m_counts[i], m_counts[i-1]);
+                i--;
+            }
             return;
         }
     }
@@ -41,7 +55,6 @@ void Bag<T,N>::add(T item)
     
     m_size++;
 }
-
 
 template<typename T, int N>
 int Bag<T,N>::count(T item) const
@@ -92,7 +105,7 @@ int main() {
     Bag<char, 26> letters;
     Bag<string, 20000> words;
     
-    ifstream is("/Users/alexandernohe/Downloads/labs_icpp/Exercises/Skeletons/Tale.txt");
+    ifstream is("/Users/alexandernohe/Documents/GitHub/CampusTrain/Lesson9-1/Lesson9-1/Tale.txt");
     
     if(!is)
     {
@@ -119,17 +132,18 @@ int main() {
     }
     
     cout << "-- lengths --" << endl;
-    cout << "1:" << lengths.count(1) << " 2:" << lengths.count(2) << " 3:" << lengths.count(3) << " 4:" << lengths.count(4) << " 5:" << lengths.count(5) << endl;
-    cout << "-- letters --" <<endl;
+    cout << "1:" << lengths.count(1) << " 2:" << lengths.count(2) << " 3:" << lengths.count(3) << " 4:" << lengths.count(4) << " 5:" << lengths.count(5) << std::endl;
+    std::cout << "-- letters --" << std::endl;
     cout << "A:" << letters.count('A') << " B:" << letters.count('B') << " C:" << letters.count('C') << endl;
-    cout << words.uniqueSize() << " out of " << words.count() << " are unique " << (double((words.uniqueSize())/double(words.count()))*100) << "%" << endl;
+    std::cout << words.uniqueSize() << " out of " << words.count() << " are unique " << (double((words.uniqueSize())/double(words.count()))*100) << "%" << endl;
     
     for (int i=0; i < words.count(); i++) {
-        string w;
+        std::string w;
         int n = words.item(i, w);
         if(n != 0)
         {
             cout << n << ":" << w << "\n";
         }
     }
+    is.close();
 }
