@@ -171,4 +171,58 @@ Static binding is by default in C++ (no virtual keyword).
 
 final at the end of a declaration of a base class does not allow derrived classes to override an implementation.
 
-.
+Lesson 9 - Templates
+
+Client specializes the class template to the desired type.
+
+Have a variety of classes with different types in the same program.
+
+Templates can have multiple values.  For instance, a Map template (dictionary) can match a name to a phone number.
+
+Template parameters can also be compile-time constants. Template parameters can also have default values for these compile-time constants.
+
+Templates have 0 runtime costs whereas virtual functions have runtime costs.
+
+Can potentially increase the size of the EXE generated for the program because of the potential implementation of templates.
+
+Lesson 10 - Pointers
+
+* suffix declares a pointer.
+
+Pointer holds an indication where something is
+
+& operator generates a pointer.  for instance:
+int x;
+int* p;
+p = &x;
+
+if we want to talk about the int that p points to, we would use a * to show the object that p points to.
+
+C++ can point into an array which a lot of other languages do not have that ability.
+
+subscripting with pointer is valid.  For instance:
+int* a = &data[0];
+int* b = &data[1];
+b[-1] == a[0];
+
+Pointers can have arthimetic applied to them.
+int* p;
+p += 5;
+Moves ahead 5 elements in the array.
+
+for loop assigning every value to 42 using pointers of an array da
+int da[5];
+int* dp;
+for(dp=da; dp < da+5; dp++)
+{
+  *dp = 42;
+}
+
+using pointers in looping arrays should theoretically be faster but any optomized compiler today should be good for arrays.
+
+Uses the pointer style when working with vectors/linked list/custom data types...
+Same syntax as arrays because the ++ operator is overloaded to take you to the next item in the custom data type.
+
+Dot operator is for a reference to that type and a -> operator is used for a pointer of a certain type.
+
+this is a pointer when used within a member function so we would need to use -> operator when using this in a member function.
