@@ -287,5 +287,26 @@ When assigning the pointer, you are not deallocating the space it was originally
 When using pointers and dynamically allocated memory, the assignment operator needs to be overridden to call the destructor of the original pointer and then assign it to the new one.  Convention is to return a reference.
 
 Aliasing - when assigning an object to itself.  Having more than one object assigned to the same object.
+Do a self assignment check to avoid problems.
+
+Copying is another resource allocation problem when working with pointers and dynamic memory.
+
+When copying a template, the pointer gets copied.  Therefore, the pointer points to the same location, not a different dynamically allocated memory location.
+
+So in certain scenarios, the compiler cannot determine how we copy information.  We need to define it.
+
+Initialization would call a constructor.  There is a copy constructor that overrides the default memberwise copy.
+
+Can share code between copy constructor and the assignment operator.
+
+if trying to swap objects and want to do it cheaply, we could just swap the pointers using the standard 3 way stop.
+
+Copy-and-Swap Idioim  and is used as a popular way to reassign data.
+
+The classic rule of three says that if you need to write one of the following you will need to write the other two:
+
+Copy constructor
+Assignment operator
+destructor
 
 .
