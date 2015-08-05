@@ -105,7 +105,7 @@ int main() {
     Bag<char, 26> letters;
     Bag<string, 20000> words;
     
-    ifstream is("/Users/alexandernohe/Documents/GitHub/CampusTrain/Lesson9-1/Lesson9-1/Tale.txt");
+    ifstream is("/Users/alexandernohe/Downloads/labs_icpp/Exercises/Skeletons/Tale.txt");
     
     if(!is)
     {

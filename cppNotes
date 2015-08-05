@@ -218,7 +218,7 @@ for(dp=da; dp < da+5; dp++)
   *dp = 42;
 }
 
-using pointers in looping arrays should theoretically be faster but any optomized compiler today should be good for arrays.
+using pointers in looping arrays should theoretically be faster but any optimized compiler today should be good for arrays.
 
 Uses the pointer style when working with vectors/linked list/custom data types...
 Same syntax as arrays because the ++ operator is overloaded to take you to the next item in the custom data type.
@@ -226,3 +226,66 @@ Same syntax as arrays because the ++ operator is overloaded to take you to the n
 Dot operator is for a reference to that type and a -> operator is used for a pointer of a certain type.
 
 this is a pointer when used within a member function so we would need to use -> operator when using this in a member function.
+
+One use of pointers in C is to update the reference to your data.
+Another use is to traverse an array.
+Another use is express relationships in data structures.
+
+Rather than contain a collection of something, contain a collection of pointers.
+
+Use incomplete type specifications when needing to use something before it is implemented.
+Known as a forward declaration.  Cannot use if a containing data type is in the class, can only use with pointers.
+
+nullptr is a well defined value that doesn't point to anything.  Not much that can be done with it.  Used for equality or inequality but cannot do anything with it.  It is the neutral value equivalent like zero is for numerical types.
+
+When needing to use pre-C++11 compilers, using a 0 is a nullptr.
+
+Undefined behavior to try to follow the nullptr.
+
+Lesson 11 - Dynamic Memory 1
+
+Pointers are used when we use dynamic memory.
+
+If its a local variable it lives on the runtime stack.  When the function returns, the variables go away.
+
+Variables declared outside any function or as static.  They live in the static storage area and lives for the duration of the program.
+
+new and delete operators uses memory from the heap (free store)
+
+new will allocate memory and do initialization and returns a pointer.
+
+delete will perform deconstruction and release memory.  It will not create a nullptr but will leave a dangling pointer.  A pointer to storage that no longer belongs to us and is undefined behavior to follow that pointer.
+
+Maybe a object is expensive to construct.  Rather than construct it, use dynamic memory allocation to construct it only if we need it.
+
+We can create functions to establish the object or get rid of the object.
+
+Calling the new keyword twice without calling delete between causes memory leaks.  It allocates space in the heap without deallocating the previous space.
+
+Can use constructor arguments with new keywork.  Calling delete with a nullptr is totally ok.
+
+use [] with new and delete to dynamically decide the size of an array at runtime. for arrays, use the delete [] arrayPtrName; syntax
+
+Reallocating a pointer to a new dynamic memory set causes a memory leak.  We need to call the delete keyword.
+
+nothrow throws an exception if an allocation cannot occur.
+
+Dynamic allocation is slower for data types as there is more overhead for managing the free store.
+
+Lesson 14 - Dynamic Memory 2
+
+Classes may dynamically allocate internally.  If the class has any dynamic objects that it points to, the destructor needs to call the delete object on that pointer.  The reason the destructor is called is because the object is going away, therefore, the delete to a dynamically allocated pointer needs to be called.
+
+(templates) Pointers may use members to grow dynamically.
+
+This can be used to create data types that manages its own storage.  (Std library vector, string, etc...)
+
+Assignment.  Default behavior for assignment is memberwise assignment which is problematic for pointer members.
+
+When assigning the pointer, you are not deallocating the space it was originally pointing to.  On top of that, when the destructor is called on pointer one it deallocates the space.  When it is called on pointer 2, it runs into space that is not allocated which can cause issues.
+
+When using pointers and dynamically allocated memory, the assignment operator needs to be overridden to call the destructor of the original pointer and then assign it to the new one.  Convention is to return a reference.
+
+Aliasing - when assigning an object to itself.  Having more than one object assigned to the same object.
+
+.
