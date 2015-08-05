@@ -354,3 +354,28 @@ catch(...)  <- catches any exception.  However, there is not much that can be do
 Throwing exception invokes destructors for local objects, raw dynamic memory must explicitly be deleted though.
 
 noexcept prevents functions from throwing exceptions.
+
+
+Lesson 13ish??? - Operator Overloading
+
+Operators can be overloaded to work with class types.
+
+You cannot make up your own operators.
+
+Precendence of operators cannot be changesd.
+
+Unary operators and binary operators can be overloaded independently. for instance:
+s = -b; //unary
+s = a - b; //binary
+
+Cannot overload operators for built in types.
+
+Just because you can overload them, it doesn't mean you should.  If it is straightforward, do it, otherwise, do not.
+
+Do the hard work in one and then just call the opposite in the other for < > and == !=
+
+Operator << overloaded for output in the stream i/o.
+
+Overloaded operators cost nothing extra as they are just normal function calls.
+
+.
