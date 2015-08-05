@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  Lesson9-1
+//  Lesson14
 //
 //  Created by Alexander Nohe on 8/4/15.
 //  Copyright (c) 2015 Alexander Nohe. All rights reserved.
@@ -67,7 +67,7 @@ Bag<T>::~Bag<T>()
 template<typename T>
 Bag<T>& Bag<T>::operator=(const Bag<T>& b)
 {
-    if(this == &b) {return *this;}
+    if(this == &b) return *this;
     
     delete [] m_counts;
     delete [] m_items;
@@ -123,6 +123,9 @@ void Bag<T>::add(T item)
         }
         m_counts = newcounts;
         m_items = newitems;
+        
+        
+        
     }
     
     m_items [m_size] = item;
