@@ -309,4 +309,48 @@ Copy constructor
 Assignment operator
 destructor
 
+Lesson ??? - Standard Smart Pointers
+
+We can accidentally hold locks and miss deleting items that need to be deleted creating memory leaks.
+
+A new convention on how to avoid these problems was created.
+
+Smart pointer is for anything that acts like a pointer but whose behavior throws exceptions and what not.
+
+There is a unique pointer and a shared pointer.
+
+Inclued the header memory which includes there pointers.  A unique pointer is in a context where you only want one pointer pointing to a data type.  Cannot copy unique pointers.  Unique pointers destructor releases the object.
+
+These are raw pointers at initalization but then you dynamically control the object and immediately pass the unique pointer to a constructor.
+
+shared pointers automatically releases dynamic memory once all std::shared_ptrs to the memory fo out of scope.
+
+Smart pointers act like raw pointers.
+
+Unique pointers can be used for arrays whereas shared pointers cannot be used for arrays.
+
+RAII classes are types that release their pointer at destruction to prevent memory leaks.  Resource Acquisition is Initialization
+
+RAII classes are able to prevent resource leaks.
+
+Vectors are similar to Arrays
+
+Lesson 15 - Exceptions
+
+How does a low level routine alert a high level routine to show the error.
+
+Exceptions are an error notification mechanism.
+
+The exception is thrown and it will propegate until it is caught.
+
+Exceptions can be objects.  Therefore, we can get more information rather than just the error code.
+
+Catch by reference when catching exceptions.
+
+The appropriate handler needs to be choosen by the type thrown.
+
+catch(...)  <- catches any exception.  However, there is not much that can be done with it.
+
+Throwing exception invokes destructors for local objects.
+
 .

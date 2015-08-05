@@ -209,6 +209,8 @@ int main() {
         words.add(w);
     }
     
+
+    
     cout << "-- lengths --" << endl;
     cout << "1:" << lengths.count(1) << " 2:" << lengths.count(2) << " 3:" << lengths.count(3) << " 4:" << lengths.count(4) << " 5:" << lengths.count(5) << std::endl;
     std::cout << "-- letters --" << std::endl;
