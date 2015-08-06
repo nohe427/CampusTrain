@@ -444,4 +444,34 @@ Destructors may be virtual so it will be dynamically bound wen deleted through b
 
   The base class destructor would be called when the derived classes destructor is called.  This holds true as well when it is a virtual function. We would need to implement the base class destructor as virtual as well.
 
-.
+Lesson - Scope (Not the mouthwash)
+
+Static data members often called class data and are not part of each object.
+
+Can be used directly in the class and the cope resolution operator outside the class:
+Class::StaticMember
+
+Static data members must be defined outside the class.
+
+Member functions can be static as well and can access only static members.
+
+Name conflicts may start to exist between libraries.  Names must be unique within a scope.
+
+Things can be wrapped in a namespace which helps prevent duplicate names in a scope.  It will provide a logical grouping of related types.
+
+Implementations must be within the namespace.
+
+A using declaration brings one name into the local scope.  Removes need for explicit qualifications.
+e.g. using std::cout;
+
+A using directive brings all names into the local scope.
+e.g. using namespace std;
+
+Differing namespaces may share a name.  It is ok to use directives for both but when a conflicting name is present it makes the call ambiguios.  We would then need to use that name with a qualifier.
+
+Namespaces may contain anything.
+
+std::cout will get the standard library cout
+::cout will get the global scope cout.
+
+Naming and scope resolution are compile time issues and will not cause any inefficencies.
