@@ -439,4 +439,9 @@ Its not uncommon to have a class that is pure virtual functions and nothing else
 
 This creates an easier way to extend objects.
 
+Destructors may be virtual so it will be dynamically bound wen deleted through base pointer.
+  - Best practive days polymorphic type should have virtual destructors.
+
+  The base class destructor would be called when the derived classes destructor is called.  This holds true as well when it is a virtual function. We would need to implement the base class destructor as virtual as well.
+
 .
