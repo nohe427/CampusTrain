@@ -378,4 +378,65 @@ Operator << overloaded for output in the stream i/o.
 
 Overloaded operators cost nothing extra as they are just normal function calls.
 
+Lesson - Constructors 2
+
+Constuction always goes through 3 steps
+
+1)  Construct the base part.
+2)  Construct the data members.
+3)  Execute the body of the constructor.
+
+Which constructor is called in step 2?
+There is a member initialization list used to invoke constructors for data members.  This specifies which constructor to use and what arguments to provide to it.  The default constructor is used for members not listed in the member initialization list.  For built in types, it doesn't matter where the construction happens, however, for custom data types, putting it in the member initialization list increases performance.
+
+If there is no default constructor, and a data member is left out of the data member initialization list, it will not compile.
+
+The base construction can also be specified by using member initialization list.  This means that any classes that inherit the base class can construct the base part of the class in the member initialization list.  When the constructor is omitted, the default constructor is invoked.
+
+Initialization order determined by class declaration not be order in member initialization list.
+
+When an object goes away, we need to clean up.  The destructors for their subtypes need to be called as well.  The order for destruction is:
+
+1)  The destructor body is called;
+2)  Destroy the members bottom-to-top;
+3)  Destroy the base class
+(opposite of the construction)
+
+Compiler-generated destruction is ALWAYS in reverse order of construction.
+
+Data members are constructed in the order of their declaration in the class therefore, they are destroyed in the reverse order in the declaration in the class.
+
+Based on the order that the data members are listed in within the member list in the class, when using the member initialization list, the members can be confused when initialized.
+
+Default values can be declared in the member declaration in c++11.
+
+Compiler will automatically generate some functions.
+1)  Default constructor
+2)  Copy Constructor
+3)  Default constructor
+
+No need to write your own in the genereated version is good enough.
+
+Lesson - Virtual Functions 2!
+
+A heterogeneous collection can be created with an array of base pointers that can be filled with different derived types.
+
+You can dynamically bind methods so when the function of a base type pointer is called, it will call the correct function for the derived type.
+
+we can add a new derived tyoe to the hierarchy.  Generic code is unchanged and no recompilation required.
+
+Ti implement a class with virtual functions, the compiler generates a virtual function table, adds a hidden vptr data member, and sets vptr in each constructor.
+
+A pointer will be added to the object at compile time with a virtual pointer that points the object that it is referencing and its virtual table.
+
+since there is no meaningful implementation for some base class functions, we need to make it an abstract operation. This means that we need to create a pure virtual function, which cannot be invoked by the base class but requires the derived classes to have it.  The syntax for pure virtual functions (abstract operations) is:
+(draw is the operation in this)
+virtual void draw() = 0;
+
+If a class has at least one pure virtual functions, the class becomes abstract and can never be instantiated.  You can declare pointers and references to that type.
+
+Its not uncommon to have a class that is pure virtual functions and nothing else.  This is similar to interface in C# or Java.  C++ does not have a definition for interface.
+
+This creates an easier way to extend objects.
+
 .
