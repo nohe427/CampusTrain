@@ -475,3 +475,74 @@ std::cout will get the standard library cout
 ::cout will get the global scope cout.
 
 Naming and scope resolution are compile time issues and will not cause any inefficencies.
+
+Lesson - Inheritance 2
+
+Multiple inheritance versus private inheritance.
+
+Derived class inherits data and functions from all base classes.
+
+The cost of a conversion from a derived class address to a base class address is an add function.  Every compiler will store the base object at the top of the derived object so that way the address of the base object is at the top of the derived class.  This is just a common optimization.
+
+Base classes may have members that have the same name.  In the situation where the names are the same and an ambiguity situation arises, you would need to use the full declaration:
+p.memAvail();
+veresus
+p.Phone::memAvail();
+or
+p.Camera::memAvail();
+
+A class may indirectly derive twice from a base class, it will inherit two copies of the data members.
+
+Virtual base classes give one copy of mulitply-inherited data rather than two.
+
+The virtual base class is a pointer to the virtual table.
+
+Inhertiance may be private.
+All inherited members become private to the derived class and are not accessible by clients of the derived class.  The class may need to manipulate these private members and the clients may not need to use them.  It is simply an implementation technique.
+
+Cannot pass private base members to functions that call for base members.
+
+Private inheritance can be achieved through using private data members as well.  There is no performance increase in using private data members.
+
+To use private inheritance over a private data member allows the user to access protected data members and the ability to override virtual functions
+
+Lesson - Type Conversion
+
+There are two equivalent ways to cast.
+C++ Constructor style which generalizes to multi-arg constructor calls.
+traditional c style often requires extra parentheses and works for pointers and references
+
+dynamic cast which is for inheritance based conversions.  Only works for polymorphic types (classes with virtual functions)  Check the items and if it returns nullptr than you know that they dynamic cast did not work
+
+static_cast - uses only compile time type information
+  Can perform a down-cast but does not provide runtime validation, checking for correctness is left to program logic
+  works only for related types, in implicit conversion must exist in the opposite direction
+
+const_cast - adds or removes const, cannot otherwise change the type
+  usually only used to cast away constness to allow attempts to modify const objects (not good practice)
+
+get rid of const protection is to fix a bad interface that otherwise cannot be corrected.
+
+reinterpret_cast converts between unrelated types
+  generally indicates a non-portable (platform-specific) conversion such as between pointer and integer or between unrelated pointers
+
+Use the typeid operator to access type information at runtime  The typeid operator yields type_info instance for the given type.
+
+Constructors are user-defined conversions  Single parameter constructors are type converters and will be invoked automatically by the compiler
+
+The compiler uses type conversions with overloaded operators to allow mixed-type expressions.
+
+Defaults may produce single-parameter constructors  which is an automatic conversion
+
+Multiple conversions may produce ambiguity.
+
+Order of precendence for automatic conversion
+1)  Exact match.
+2)  "Trivial" conversion T => const T
+3)  "Widening conversions" => char - short - int - long
+4)  Any built in conversions
+5)  User defined conversions
+
+explicit disables any implicit conversion happening via a constructor.
+
+If you have a member function that starts with operator, its member function converts from a class type to any target type.
