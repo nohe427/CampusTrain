@@ -586,3 +586,65 @@ The object created from a lamba expression is a closure
 A lambda can capture variables from the enclosing scope.  This means that you are able to talk about local variables in the lambda expression when they are enclosed in the [].
 
 You can also capture a variable by reference.  When using a [=] it will capture everything in the local scope that is used in the lambda.
+
+Lesson - Standard Containers
+
+The STL - Standard Template Library -> Very commonly used library incorporated by the standards committee written by HP Labs.
+
+Container wise
+  -vector
+  -list
+  -deque
+  -map ,multimap
+  - set, multiset
+
+C++11 adds a hashtable type called un_ordered_map unordered_multimap unordered_set
+
+All the items in the vector default to zero  Vectors are initialized at runtime.
+
+Linked list -> double linked list.  every item in the list has a pointer with it that points to the element before it and after it.  If there is something expensive with the STL it is generally not available.
+
+Set - no duplicates and keeps the element stored.
+
+Iterators allows generic navigation of containers.  There is no need to know internal representations and they behave like pointers.
+
+about 80 algorithms in STL and are fairly trivial
+
+Lesson - Compilation
+
+Preprocessing is the first stage of source-code translation.  Performed before compiling and provides many useful services.
+
+items can be conditionally compiled using #if and #define.
+
+Can use #ifdef to test if a symbol has been defined.
+
+Define can be used to create a macro and the preprocessor performs symbolic expansion by replacing the symbol by text
+
+Arguements can be provided to the macros and will substitue text as it runs
+
+Files can be compiled seperately and then packaged together at the end.
+
+extern can be used to refer to a global variable that lies in another file.
+
+Header files can contain common declarations.
+
+Classes are often organized into header/source file pairs
+
+Double quotes tells the compiler to look locally for the header files.
+
+Headers usually include dependenies to other headers.
+
+For mulitple inclusions use a head guard to protect itself from importing the definition twice.
+
+#ifndef POINT_H
+#define POINT_H
+
+#include "point.h"
+
+#endif
+
+Namespaces can be spread across multiple files.  It will all get into the same namespace and will not override each other.
+
+A common organization is to use subfolders for entire libraries that contain different namespaces
+
+.

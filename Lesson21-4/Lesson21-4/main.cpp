@@ -57,8 +57,7 @@ int main() {
         
         cin >> ch;
         
-        
-        if(lam('a','f',ch)) cout << " in range1\n";
+        if([](char a1, char a2, char a3) {return (a3> a1 && a3 < a2);}) cout << " in range1\n";
         if(lam('q','z',ch)) cout << " in range2\n";
     }
 }
