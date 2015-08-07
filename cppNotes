@@ -546,3 +546,43 @@ Order of precendence for automatic conversion
 explicit disables any implicit conversion happening via a constructor.
 
 If you have a member function that starts with operator, its member function converts from a class type to any target type.
+
+Lesson - Functions 2
+
+a function pointer stores a function's address.
+Declareing a function pointer:
+double (*fn)(double, double);
+
+Common to use typedef with function pointers to simplify declarations.
+
+In C++11 you can pull the name out with a using
+using BinaryMath = double (*)(double, double);
+
+Why do we have pointers to functions?
+
+Its nothing new.  Fortran did this.  Pointers to functions can be used as arguments to other functions.  Which allows multiple functions to be passed to other functions.  For instance, if you wanted to add two arrays togther in a function or square the results and add them together you could do that.
+
+There is a sort function that can take three arguments.  The third argument can be a pointer to a function that takes type T and returns a boolean.  This is so sort can be applied to many different data types.
+
+There are callback funcitons.  These are user-settable functions that are stored inside an object and called when an event occurs/
+
+Sensor invokes callback when triggered.
+
+if (action_ != nullptr)
+  action_();
+
+When passing in a pointer to a member function the ->* or .* operator would need to be used that would access the pointer of that member function.
+
+Can overload operator-function-call as a replacement for the apply method to create a function object.
+
+Lesson - Lambda
+
+[] (double x, double y) {return x*x + y*y;}
+
+If there is only one line, a return statement, the type that it returns is not required to be specified.
+
+The object created from a lamba expression is a closure
+
+A lambda can capture variables from the enclosing scope.  This means that you are able to talk about local variables in the lambda expression when they are enclosed in the [].
+
+You can also capture a variable by reference.  When using a [=] it will capture everything in the local scope that is used in the lambda.
