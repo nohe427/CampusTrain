@@ -646,5 +646,3 @@ For mulitple inclusions use a head guard to protect itself from importing the de
 Namespaces can be spread across multiple files.  It will all get into the same namespace and will not override each other.
 
 A common organization is to use subfolders for entire libraries that contain different namespaces
-
-.
